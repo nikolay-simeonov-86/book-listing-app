@@ -1,0 +1,13 @@
+{
+    "name": "example/book-listing-app",
+    "description": "Book Listing App",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "klein/klein": "^2.1",
+        "twig/twig": "^2.0"
+    }
+}
