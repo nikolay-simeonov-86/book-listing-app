@@ -25,9 +25,19 @@ class User
     private $password = null;
     
     /**
-     * @var bool
+     * @var int
      */
     private $active;
+    
+    /**
+     * @var int
+     */
+    private $admin;
+    
+    /**
+     * @var array
+     */
+    private $books;
 
     /**
      * Get the value of firstName
@@ -120,7 +130,7 @@ class User
      */ 
     public function setPassword(string $password)
     {
-        $this->password = password_hash($password);
+        $this->password = password_hash($password, PASSWORD_BCRYPT);
 
         return $this;
     }
@@ -128,7 +138,7 @@ class User
     /**
      * Get the value of active
      *
-     * @return  bool
+     * @return  int
      */ 
     public function isActive()
     {
@@ -138,13 +148,61 @@ class User
     /**
      * Set the value of active
      *
-     * @param  bool  $active
+     * @param  int  $active
      *
      * @return  self
      */ 
-    public function setActive(bool $active)
+    public function setActive(int $active)
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of admin
+     *
+     * @return  int
+     */ 
+    public function isAdmin()
+    {
+        return $this->admin;
+    }
+
+    /**
+     * Set the value of admin
+     *
+     * @param  int  $admin
+     *
+     * @return  self
+     */ 
+    public function setAdmin(int $admin)
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of books
+     *
+     * @return  array
+     */ 
+    public function getBooks()
+    {
+        return $this->books;
+    }
+
+    /**
+     * Set the value of books
+     *
+     * @param  string  $books
+     *
+     * @return  self
+     */ 
+    public function setBooks(string $books)
+    {
+        $this->books = unserialize($books);
 
         return $this;
     }

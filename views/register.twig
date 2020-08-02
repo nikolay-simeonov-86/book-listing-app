@@ -1,0 +1,93 @@
+{% extends "base.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+    <form class="needs-validation" novalidate method="POST" action="{{ request.uri() }}">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="firstName">First name</label>
+                <input type="text" name="first_name" class="form-control" id="firstName" placeholder="First name" value="{{ user.getFirstName() }}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="lastName">Last name</label>
+                <input type="text" name="last_name" class="form-control" id="lastName" placeholder="Last name" value="{{ user.getLastName() }}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="email">Email</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="icon">@</span>
+                    </div>
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Email" aria-describedby="icon" required>
+                    <div class="invalid-feedback">
+                        Please choose an email.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-2 mb-3"></div>
+            <div class="col-md-4 mb-3">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password" 
+                    pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                <div class="invalid-feedback">
+                    Password must have UpperCase, LowerCase, Number/SpecialChar and min 8 Chars
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirm_password" class="form-control" id="confirmPassword" placeholder="Confirm Password" 
+                    pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                <div class="invalid-feedback">
+                    Passwords must match
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-2 mb-3"></div>
+        </div>
+        <div class="text-right">
+            <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block additional_js %}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                const password = document.getElementById('password');
+                const confirmPassword = document.getElementById('confirmPassword');
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                const validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false || password.value !== confirmPassword.value) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+{% endblock %}

@@ -10,7 +10,7 @@ class Book
     private $name;
 
     /**
-     * @var int
+     * @var string
      */
     private $isbn;
 
@@ -51,7 +51,7 @@ class Book
     /**
      * Get the value of isbn
      *
-     * @return  int
+     * @return  string
      */ 
     public function getIsbn()
     {
@@ -61,11 +61,11 @@ class Book
     /**
      * Set the value of isbn
      *
-     * @param  int  $isbn
+     * @param  string  $isbn
      *
      * @return  self
      */ 
-    public function setIsbn(int $isbn)
+    public function setIsbn(string $isbn)
     {
         $this->isbn = $isbn;
 
