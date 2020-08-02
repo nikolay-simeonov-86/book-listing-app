@@ -1,1 +1,0 @@
-# Book listing application
